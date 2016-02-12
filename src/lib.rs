@@ -99,7 +99,7 @@ impl Sdl2ImageContext {
     }
     
     /// Loads a surface from the given xpm array.
-    fn load_surface_from_xpm_array<'a>(&self, xpm: *const *const i8)
+    pub fn load_surface_from_xpm_array<'a>(&self, xpm: *const *const i8)
             -> Result<Surface<'a>, String> {
         
         unsafe {
@@ -146,14 +146,14 @@ impl Sdl2ImageContext {
             if (raw as *mut ()).is_null() {
                 Err(get_error())
             } else {
-                unsafe { Ok(Surface::from_ll(raw)) }
+                Ok(Surface::from_ll(raw))
             }
         }
         
     }
     
     /// Saves the given surface to the given file.
-    fn save_surface_to_file<'a>(&self, surface: &Surface<'a>, filename: &Path) 
+    pub fn save_surface_to_file<'a>(&self, surface: &Surface<'a>, filename: &Path) 
             -> Result<(), String> {
         
         let c_str = CString::new(filename.to_str().unwrap()).unwrap();
@@ -168,7 +168,7 @@ impl Sdl2ImageContext {
     }
     
     /// Saves the given surface to the given RWops object.
-    fn save_surface_to_rw<'a>(&self, surface: &Surface<'a>, dst: &mut RWops)
+    pub fn save_surface_to_rw<'a>(&self, surface: &Surface<'a>, dst: &mut RWops)
             -> Result<(), String> {
         
         let result = unsafe {
