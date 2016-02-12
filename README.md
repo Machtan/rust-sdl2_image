@@ -22,7 +22,7 @@ Cargo.toml file:
 
 ```toml
 [dependencies]
-sdl2_image = "0.3"
+sdl2_image = "2.0.0"
 ```
 
 Or, to reference this repository directly:
@@ -49,17 +49,9 @@ rustc --cfg mac_framework src/sdl2_image/lib.rs
 ```
 
 # Demo
-
 You'll find included with the library a simple demo that loads and displays
 a given image :
 
 ```bash
-cargo run /path/to/some/image.(jpg|png)
-```
-
-Or:
-
-```bash
-rustc -L. src/demo/main.rs -o demo
-./demo image.(png|jpg)
+cargo run --example demo /path/to/some/image.(jpg|png)
 ```
